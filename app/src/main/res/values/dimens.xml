@@ -2,9 +2,9 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="clf_card_view_margin">10dp</dimen>
+    <dimen name="adf_card_view_margin">10dp</dimen>
     <dimen name="clf_list_view_margin">10dp</dimen>
-    <dimen name="dclf_card_view_margin">10dp</dimen>
+    <dimen name="dcf_card_view_margin">10dp</dimen>
     <dimen name="dcf_additional_text_view_margin">8dp</dimen>
     <dimen name="cv_additional_text_view_margin">10dp</dimen>
 </resources>

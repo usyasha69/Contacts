@@ -1,4 +1,4 @@
-package com.example.pk.contacts;
+package com.example.pk.contacts.fragments;
 
 
 import android.os.Bundle;
@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.pk.contacts.Contact;
+import com.example.pk.contacts.MainActivity;
+import com.example.pk.contacts.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

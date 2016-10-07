@@ -2,80 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.example.pk.contacts.ContactListFragment">
-
-    <android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        card_view:cardCornerRadius="4dp"
-        android:layout_margin="@dimen/clf_card_view_margin"
-        card_view:cardBackgroundColor="@color/cardview_light_background">
-
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/clf_enter_name"
-                android:ems="10"
-                android:id="@+id/clf_contact_name_label" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:hint="@string/clf_enter_telephone_number"
-                android:ems="10"
-                android:id="@+id/clf_contact_telephone_number_label" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/clf_enter_email"
-                android:id="@+id/clf_contact_email_label"
-                android:inputType="textEmailAddress"/>
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPostalAddress"
-                android:ems="10"
-                android:hint="@string/clf_enter_address"
-                android:id="@+id/clf_contact_address_label" />
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <Button
-                    android:text="@string/clf_create_contact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/clf_create_contact"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:text="@string/clf_clear_all_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/clf_clear_all_label"
-                    android:layout_weight="1" />
-            </LinearLayout>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
+    tools:context="com.example.pk.contacts.fragments.ContactListFragment">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/fcl_list_view"
+        android:id="@+id/clf_list_view"
         android:layout_margin="@dimen/clf_list_view_margin">
     </ListView>
 </LinearLayout>

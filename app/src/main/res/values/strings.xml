@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Contacts</string>
-    <string name="clf_enter_name">Enter name…</string>
-    <string name="clf_enter_telephone_number">Enter phone number…</string>
-    <string name="clf_enter_email">Enter email…</string>
-    <string name="clf_enter_address">Enter address…</string>
-    <string name="clf_create_contact">Create</string>
-    <string name="clf_clear_all_label">Clear</string>
+    <string name="adf_enter_name">Enter name…</string>
+    <string name="adf_enter_telephone_number">Enter phone number…</string>
+    <string name="adf_enter_email">Enter email…</string>
+    <string name="adf_enter_address">Enter address…</string>
+    <string name="adf_create_contact">Create</string>
+    <string name="adf_clear_all_label">Clear</string>
     <string name="dcf_name">Name</string>
     <string name="dcf_phone_number">Phone number</string>
     <string name="dcf_email">Email</string>

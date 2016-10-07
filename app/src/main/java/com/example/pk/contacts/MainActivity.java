@@ -1,8 +1,13 @@
 package com.example.pk.contacts;
 
 import android.content.res.Configuration;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
+
+import com.example.pk.contacts.fragments.AddContactFragment;
+import com.example.pk.contacts.fragments.ContactListFragment;
+import com.example.pk.contacts.fragments.DetailContactFragment;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -55,23 +60,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createContactListFragment() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
         if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            getSupportFragmentManager()
+            fragmentManager
                     .beginTransaction()
-                    .replace(R.id.ma_portrait_fragments_container
-                            , ContactListFragment.newInstance())
+                    .replace(R.id.ma_portrait_acf_and_dcf_container
+                            , AddContactFragment.newInstance()
+                            , AddContactFragment.class.getSimpleName())
+                    .replace(R.id.ma_portrait_clf_container
+                            , ContactListFragment.newInstance()
+                            , ContactListFragment.class.getSimpleName())
                     .commit();
         } else {
-            getSupportFragmentManager()
+            fragmentManager
                     .beginTransaction()
                     .replace(R.id.ma_landscape_contact_fragment_container
-                            , ContactListFragment.newInstance())
-                    .commit();
-
-            getSupportFragmentManager()
-                    .beginTransaction()
+                            , ContactListFragment.newInstance()
+                            , ContactListFragment.class.getSimpleName())
                     .replace(R.id.ma_landscape_detail_contact_fragment_container
-                            , DetailContactFragment.newInstance())
+                            , DetailContactFragment.newInstance()
+                            , DetailContactFragment.class.getSimpleName())
                     .commit();
         }
     }

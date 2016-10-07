@@ -42,7 +42,7 @@ public class ContactListAdapter extends BaseAdapter {
             LayoutInflater layoutInflater =
                     (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            rowView = layoutInflater.inflate(R.layout.lv_custom_view, viewGroup, false);
+            rowView = layoutInflater.inflate(R.layout.list_view_item, viewGroup, false);
 
             viewHolder = new ViewHolder();
             viewHolder.name = (TextView) rowView.findViewById(R.id.cv_name);
