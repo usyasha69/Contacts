@@ -7,14 +7,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.pk.contacts.Contact;
-import com.example.pk.contacts.ContactListAdapter;
 import com.example.pk.contacts.ContactNameSorter;
 import com.example.pk.contacts.MainActivity;
 import com.example.pk.contacts.R;
+import com.example.pk.contacts.Validation;
 
 import java.util.Collections;
 
@@ -93,44 +92,12 @@ public class AddContactFragment extends Fragment {
         }
 
         //checked email
-        if (!checkEmail()) {
+        if (!Validation.checkEmail(contactLabelEmail.getText().toString())) {
             result = false;
         }
 
         //checked telephone number
-        if (!checkTelephoneNumber()) {
-            result = false;
-        }
-
-        return result;
-    }
-
-    /**
-     * This method checked email by validate.
-     *
-     * @return - is validate
-     */
-    private boolean checkEmail() {
-        boolean result = true;
-
-        if (!contactLabelEmail.getText().toString().contains("@")) {
-            result = false;
-        }
-
-        return result;
-    }
-
-    /**
-     * This method checked telephone number by validate.
-     *
-     * @return - is validate
-     */
-    private boolean checkTelephoneNumber() {
-        boolean result = true;
-
-        String telephoneNumber = contactLabelTelephoneNumber.getText().toString();
-
-        if (!telephoneNumber.startsWith("+380") || telephoneNumber.length() != 13) {
+        if (!Validation.checkTelephoneNumber(contactLabelTelephoneNumber.getText().toString())) {
             result = false;
         }
 
