@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.pk.contacts.Contact;
+import com.example.pk.contacts.R;
 import com.example.pk.contacts.fragments.AddContactFragment;
 import com.example.pk.contacts.fragments.ContactListFragment;
 import com.example.pk.contacts.fragments.DetailContactFragment;

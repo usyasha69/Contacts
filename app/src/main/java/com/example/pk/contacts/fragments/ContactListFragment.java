@@ -5,23 +5,22 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
-import com.example.pk.contacts.ContactListAdapter;
-import com.example.pk.contacts.MainActivity;
+import com.example.pk.contacts.Contact;
 import com.example.pk.contacts.R;
+import com.example.pk.contacts.RecyclerViewAdapter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ContactListFragment extends Fragment {
-
-    @BindView(R.id.clf_list_view)
-    ListView contactsList;
+    @BindView(R.id.clf_recycler_view)
+    RecyclerView recyclerView;
 
     public static ContactListFragment newInstance() {
 
@@ -39,10 +38,12 @@ public class ContactListFragment extends Fragment {
 
         ButterKnife.bind(this, root);
 
-        updateAdapter();
-        contactsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext());
+        recyclerViewAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(Contact item, int position) {
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
 
                 if (getContext().getResources().getConfiguration().orientation
@@ -52,7 +53,7 @@ public class ContactListFragment extends Fragment {
                             .remove(fragmentManager.findFragmentByTag(
                                     ContactListFragment.class.getSimpleName()))
                             .replace(R.id.ma_portrait_acf_and_dcf_container
-                                    , DetailContactFragment.newInstance(MainActivity.contacts.get(i))
+                                    , DetailContactFragment.newInstance(item)
                                     , DetailContactFragment.class.getSimpleName())
                             .addToBackStack(null)
                             .commit();
@@ -60,17 +61,19 @@ public class ContactListFragment extends Fragment {
                     fragmentManager
                             .beginTransaction()
                             .replace(R.id.ma_landscape_detail_contact_fragment_container
-                                    , DetailContactFragment.newInstance(MainActivity.contacts.get(i))
+                                    , DetailContactFragment.newInstance(item)
                                     , DetailContactFragment.class.getSimpleName())
                             .commit();
                 }
             }
         });
 
+        recyclerView.setAdapter(recyclerViewAdapter);
+
         return root;
     }
 
     public void updateAdapter() {
-        contactsList.setAdapter(new ContactListAdapter(getContext()));
+        recyclerView.setAdapter(new RecyclerViewAdapter(getContext()));
     }
 }
