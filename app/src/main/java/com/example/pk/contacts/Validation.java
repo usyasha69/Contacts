@@ -11,7 +11,7 @@ public class Validation {
     public static boolean checkEmail(String email) {
         boolean result = true;
 
-        if (email.contains("@")) {
+        if (!email.contains("@")) {
             result = false;
         }
 

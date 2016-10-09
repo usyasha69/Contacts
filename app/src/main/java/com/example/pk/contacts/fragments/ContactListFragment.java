@@ -1,10 +1,8 @@
 package com.example.pk.contacts.fragments;
 
 
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.pk.contacts.Contact;
+import com.example.pk.contacts.MainActivity;
 import com.example.pk.contacts.R;
 import com.example.pk.contacts.RecyclerViewAdapter;
 
@@ -21,6 +20,7 @@ import butterknife.ButterKnife;
 public class ContactListFragment extends Fragment {
     @BindView(R.id.clf_recycler_view)
     RecyclerView recyclerView;
+    RecyclerViewAdapter recyclerViewAdapter;
 
     public static ContactListFragment newInstance() {
 
@@ -40,31 +40,12 @@ public class ContactListFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext());
+        recyclerViewAdapter = new RecyclerViewAdapter(getContext());
         recyclerViewAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Contact item, int position) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-
-                if (getContext().getResources().getConfiguration().orientation
-                        == Configuration.ORIENTATION_PORTRAIT) {
-                    fragmentManager
-                            .beginTransaction()
-                            .remove(fragmentManager.findFragmentByTag(
-                                    ContactListFragment.class.getSimpleName()))
-                            .replace(R.id.ma_portrait_acf_and_dcf_container
-                                    , DetailContactFragment.newInstance(item)
-                                    , DetailContactFragment.class.getSimpleName())
-                            .addToBackStack(null)
-                            .commit();
-                } else {
-                    fragmentManager
-                            .beginTransaction()
-                            .replace(R.id.ma_landscape_detail_contact_fragment_container
-                                    , DetailContactFragment.newInstance(item)
-                                    , DetailContactFragment.class.getSimpleName())
-                            .commit();
-                }
+                MainActivity mainActivity = (MainActivity) getActivity();
+                mainActivity.replaceFragments(item);
             }
         });
 
@@ -74,6 +55,6 @@ public class ContactListFragment extends Fragment {
     }
 
     public void updateAdapter() {
-        recyclerView.setAdapter(new RecyclerViewAdapter(getContext()));
+        recyclerViewAdapter.notifyDataSetChanged();
     }
 }
